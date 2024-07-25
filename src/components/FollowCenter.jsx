@@ -1,3 +1,4 @@
+import gsap from 'gsap';
 import React, { useState, useEffect } from 'react';
 
 const FollowCenter = ({ imgdata }) => {
@@ -11,14 +12,27 @@ const FollowCenter = ({ imgdata }) => {
   const [data, setData] = useState(imgdata);
 
   useEffect(() => {
-    setData(imgdata); // imgdata update hone par local state ko update karo
+    setData(imgdata);
+
+  
+    requestAnimationFrame(() => {
+      gsap.from(".mscreen", {
+        scale: .8,
+        onComplete:(()=>{
+          gsap.set(".mscreen", {
+            scale: 1,
+            duration:1
+          })
+        })
+      })
+    });
   }, [imgdata]);
 
   return (
     <>
       {magazines.map((mag, index) => (
-        <div key={index} className={`${index === data ? "flex" : "hidden"} flex-col items-center p-4`}>
-          <img className='h-[40vw] w-[20vw] rounded-lg object-cover' src={mag.img} alt={mag.name} />
+        <div key={index} className={`${index === data ? "flex" : "hidden"}  flex-col items-center p-4`}>
+          <img className='h-[45vw] w-[20vw] mscreen rounded-lg object-cover' src={mag.img} alt={mag.name} />
         </div>
       ))}
     </>

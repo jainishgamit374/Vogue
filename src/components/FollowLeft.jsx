@@ -16,15 +16,15 @@ const FollowLeft = ({ sendDataToParent }) => {
   };
 
   return (
-    <div className="flex w-[25%] flex-wrap items-center justify-center gap-20">
+    <div className="flex w-[28%] flex-wrap items-center justify-center gap-20">
       {magazines.map((mag, index) => (
-        <div key={index} className="relative overflow-hidden flex items-center justify-center w-[7vw] h-[7vw] rounded-full bg-black">
+        <div key={index} className="relative flex items-center justify-center w-[8vw] h-[8vw] rounded-full bg-black">
           <img src={mag.img} alt={mag.name} className="w-full object-cover object-center border" />
           <div
             onClick={() => {
               handleClick(index);
             }}
-            className={`absolute bottom-0 left-1/2 ${index === activeImage ? "bg-red-500" : "bg-white"} hover:bg-red-500 -translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center text-black cursor-pointer`}
+            className={`absolute bottom-[-10%] left-1/2 ${index === activeImage ? "bg-red-500" : "bg-white"} hover:bg-red-500 -translate-x-1/2 w-[2.5vw] h-[2.5vw] text-[1.5vw] rounded-full flex items-center justify-center text-black cursor-pointer`}
           >
             +
           </div>
