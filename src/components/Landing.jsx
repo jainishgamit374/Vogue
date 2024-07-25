@@ -231,7 +231,7 @@ const Landing = () => {
   return (
     <div className="landpage w-full h-screen relative bg-[#dbdbdb]">
       <div className="loaderDiv h-screen w-full fixed top-0 object-cover left-0 z-50 bg-red-200">
-          <video className="video h-full object-cover w-full" src="./src/assets/something.mp4" muted></video>
+          <video className="video h-full object-cover w-full" src="./src/assets/some.mp4" muted></video>
       </div>
       <div className="absolute z-30 top-[55%] -translate-y-1/2 -left-[7%] -rotate-90">
         <h1 className="text-[10vw] leading-[6vw] font-[Vogue]">VOGUE</h1>
