@@ -7,6 +7,7 @@ import Sidenav from "./components/Sidenav"
 import LocomotiveScroll from 'locomotive-scroll';
 import Subscribe from "./components/Subscribe";
 import Footer from "./components/Footer.jsx"
+import Loader from "./components/Loader.jsx";
 const locomotiveScroll = new LocomotiveScroll();
 
 

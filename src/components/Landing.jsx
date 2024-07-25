@@ -2,6 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
+
+
 
 const Landing = () => {
   const main = useRef(null);
@@ -37,14 +41,12 @@ const Landing = () => {
       date: "6 FEBRUARY 2024",
     },
   ];
-
   useEffect(() => {
     (function initial() {
       main.current.src = data[curr - 2].img;
       incoming.current.src = data[(curr - 1) % data.length].img;
     })();
   }, []);
-
   function test() {
     if (detsIdx === 4) {
       setDetsIdx(2);
@@ -52,7 +54,6 @@ const Landing = () => {
       setDetsIdx(detsIdx + 1);
     }
   }
-
   const imgChange = () => {
     let tl = gsap.timeline({
       onComplete: () => {
@@ -119,7 +120,6 @@ const Landing = () => {
       "a"
     );
   };
-
   const handleHover1 = ()=>{
     gsap.to(".up",{
       duration: 0.5,
@@ -134,8 +134,105 @@ const Landing = () => {
       top:"100%"
     })
   };
+
+
+
+  const scrollRef = useRef(null);
+  const t1 = gsap.timeline();
+  useEffect(() => {
+    const handleDOMContentLoaded = () => {
+      const videoElement = document.querySelector(".video");
+      console.log("Video element:", videoElement);
+      if (videoElement) {
+        videoElement.play();
+        videoElement.addEventListener("ended", () => {
+          gsap.to(".loaderDiv", {
+            top: "-100vh",
+            duration: 1,
+            ease: "expo.inOut",
+            onComplete: () => {
+              t1.from(
+                ".animeHeading span",
+                {
+                  y: 200,
+                  stagger: 0.1,
+                  duration: 2,
+                  ease: "power2.inOut",
+                  opacity: 0,
+                },
+                "h"
+              );
+
+              t1.from(
+                ".secondtext span",
+                {
+                  y: 200,
+                  stagger: 0.1,
+                  duration: 2,
+                  ease: "power2.inOut",
+                  opacity: 0,
+                },
+                "h"
+              );
+
+              t1.from(
+                ".hero-images",
+                {
+                  y: 200,
+                  stagger: 0.1,
+                  duration: 2,
+                  ease: "power2.inOut",
+                  opacity: 0,
+                },
+                "h"
+              );
+
+              t1.from(
+                ".hero-images .side-img1 img",
+                {
+                  left: "50%",
+                  rotate: "0deg",
+                  stagger: 0.1,
+                  duration: 1,
+                  ease: "power2.inOut",
+                },
+                "p"
+              );
+
+              t1.from(
+                ".hero-images .side-img2 img",
+                {
+                  left: "50%",
+                  rotate: "0deg",
+                  stagger: 0.1,
+                  duration: 1,
+                  ease: "power2.inOut",
+                },
+                "p"
+              );
+
+              console.log("GSAP animations initialized");
+            },
+          });
+        });
+      } else {
+        console.error("Video element not found");
+      }
+    };
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      handleDOMContentLoaded();
+    } else {
+      document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
+    }
+  }, []);
+
+
   return (
     <div className="landpage w-full h-screen relative bg-[#dbdbdb]">
+      <div className="loaderDiv h-screen w-full fixed top-0 object-cover left-0 z-50 bg-red-200">
+          <video className="video h-full object-cover w-full" src="./src/assets/something.mp4" muted></video>
+      </div>
       <div className="absolute z-30 top-[55%] -translate-y-1/2 -left-[7%] -rotate-90">
         <h1 className="text-[10vw] leading-[6vw] font-[Vogue]">VOGUE</h1>
         <h3 className="text-[1.5vw] text-end font-semibold tracking-[1.2rem]">
