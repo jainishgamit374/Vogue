@@ -203,8 +203,8 @@ const Landing = () => {
                   }
                 }}
                 className="relative border ease-in duration-300 overflow-hidden hover:text-zinc-50 border-zinc-900 bg-transparent px-4 py-1 flex items-center justify-center text-xl font-semibold" >
-                <span className="relative z-50">NEXT</span>
-                <span className="inline-flex relative z-50 items-center justify-center w-[2vw] h-[2vw]">
+                <span className="relative z-20">NEXT</span>
+                <span className="inline-flex relative z-20 items-center justify-center w-[2vw] h-[2vw]">
                   <FaArrowRightLong size={"1.2vw"} />
                 </span>
                 <span className="up inline-block opacity-0 top-[100%] absolute w-32 h-10 bg-black"></span>
