@@ -5,6 +5,7 @@ const Navbar = () => {
   const [scrollPos, setScrollPos] = useState(0);
 
   useEffect(() => {
+    
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       const diff = currentScrollPos - scrollPos;
